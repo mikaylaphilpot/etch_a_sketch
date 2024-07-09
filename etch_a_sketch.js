@@ -48,3 +48,11 @@ function resizeGrid() {
 
 const resizeGridButton = document.getElementById('resize-button');
 resizeGridButton.addEventListener('click', resizeGrid);
+// allows users to reset grid without refreshing
+const resetGridButton = document.getElementById('reset-button');
+resetGridButton.addEventListener('click', () => {
+    const allPixels = document.querySelectorAll('.containerGrandchild');
+    for (let pixelNumber = 0; pixelNumber < allPixels.length; pixelNumber++) {
+            allPixels[pixelNumber].classList.remove('hoveredOver'); 
+    }
+});
