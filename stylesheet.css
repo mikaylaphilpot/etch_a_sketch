@@ -1,0 +1,29 @@
+#container {
+    display: flex;
+    flex-shrink: 1;
+    border: red solid 10px;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+    width: 400px;
+   /* margin-left: 450px; 
+    margin-right: 450px; */
+}
+#motherGrailContainer {
+    text-align: center;
+    max-width: fit-content;
+    margin: auto;
+}
+div.containerChild {
+    display: flex;
+    flex:1;
+    padding: 0;
+}
+div.containerGrandchild {
+    border: rgba(128, 128, 128, .25) solid 1px;
+    flex:1;
+    aspect-ratio: 1/1;
+}
+.hoveredOver {
+    background-color: rgba(138, 138, 138, 0.595);
+}
