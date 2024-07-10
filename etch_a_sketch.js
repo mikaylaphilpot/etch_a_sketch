@@ -69,7 +69,7 @@ resizeGridButton.addEventListener('click', resizeGrid);
 // allows users to reset grid without refreshing
 const resetGridButton = document.getElementById('reset-button');
 resetGridButton.addEventListener('click', () => {
-    let previousDivAmount = Math.sqrt(document.querySelectorAll('.containerGrandchild')).length
+    let previousDivAmount = (Math.sqrt(document.querySelectorAll('.containerGrandchild').length));
     removeGrid();
     createGrid(previousDivAmount);
     whenHovering();
@@ -78,7 +78,8 @@ resetGridButton.addEventListener('click', () => {
 const randomizeColorButton = document.getElementById('randomize-color');
 randomizeColorButton.addEventListener('click', () => { 
     let desiredColor = 'random';
-    let previousDivAmount = Math.sqrt(document.querySelectorAll('.containerGrandchild')).length
+    let previousDivAmount = (Math.sqrt(document.querySelectorAll('.containerGrandchild').length));
+    console.log(previousDivAmount);
     removeGrid();
     createGrid(previousDivAmount);
     whenHovering(desiredColor);
