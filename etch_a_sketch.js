@@ -6,7 +6,6 @@ function whenHovering(desiredColor='black') {
         allPixels[pixelNumber].addEventListener('mouseover', () => {
             allPixels[pixelNumber].classList.add('hoveredOver');
             let currentOpacity = (parseInt(allPixels[pixelNumber].style.opacity*10))/10
-            console.log(currentOpacity);
             let newOpacity = currentOpacity + .1;
             if (currentOpacity < 1) {
                 allPixels[pixelNumber].style.opacity = newOpacity; }
@@ -26,7 +25,6 @@ function randomRGBColors() {
     let secondRandomNumber = Math.floor((Math.random())*255);
     let thirdRandomNumber = Math.floor((Math.random())*255);
     let RGBColor = 'rgb(' + firstRandomNumber + ',' + secondRandomNumber + ',' + thirdRandomNumber + ')';
-    console.log(RGBColor);
     return RGBColor;
 }
 
