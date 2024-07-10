@@ -20,7 +20,7 @@ div.containerChild {
     padding: 0;
 }
 div.containerGrandchild {
-    border: rgba(128, 128, 128, .25) solid 1px;
+    border: rgba(128, 128, 128, .1) solid 1px;
     flex:1;
     aspect-ratio: 1/1;
 }
