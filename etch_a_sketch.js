@@ -1,17 +1,35 @@
 const container = document.querySelector("#container");
-function whenHovering() {
+
+function whenHovering(desiredColor='black') {
     const allPixels = document.querySelectorAll('.containerGrandchild');
     for (let pixelNumber = 0; pixelNumber < allPixels.length; pixelNumber++) {
         allPixels[pixelNumber].addEventListener('mouseover', () => {
+            allPixels[pixelNumber].classList.add('hoveredOver');
             let currentOpacity = (parseInt(allPixels[pixelNumber].style.opacity*10))/10
+            console.log(currentOpacity);
             let newOpacity = currentOpacity + .1;
             if (currentOpacity < 1) {
                 allPixels[pixelNumber].style.opacity = newOpacity; }
-            allPixels[pixelNumber].classList.add('hoveredOver');
-        } );
-    }
+            if (desiredColor !== 'black') {
+                desiredColor = randomRGBColors();
+                allPixels[pixelNumber].style.backgroundColor = desiredColor; 
+            }
+            else {
+                allPixels[pixelNumber].style.backgroundColor = desiredColor; 
+            }
+        });
+        };
+};
 
+function randomRGBColors() {
+    let firstRandomNumber = Math.floor((Math.random())*255);
+    let secondRandomNumber = Math.floor((Math.random())*255);
+    let thirdRandomNumber = Math.floor((Math.random())*255);
+    let RGBColor = 'rgb(' + firstRandomNumber + ',' + secondRandomNumber + ',' + thirdRandomNumber + ')';
+    console.log(RGBColor);
+    return RGBColor;
 }
+
 // pixel amount should actually be the square root of the amount of pixels desired
 function createGrid(pixelAmount = 16) {
     for (let createdDivs = 0; createdDivs < pixelAmount; createdDivs++) {
@@ -28,7 +46,6 @@ function createGrid(pixelAmount = 16) {
             anotherDiv.textContent ='';
         }
     }
-    whenHovering();
 }
 
 function removeGrid (pixelAmount = Math.sqrt((document.querySelectorAll('.containerGrandchild')).length)) {
@@ -37,7 +54,6 @@ function removeGrid (pixelAmount = Math.sqrt((document.querySelectorAll('.contai
             container.removeChild(div[removedDivs]); 
         }
     }
-createGrid();
 
 function resizeGrid() {
     removeGrid();
@@ -47,7 +63,7 @@ function resizeGrid() {
         desiredPixelAmount = 16;
     }    
     createGrid(desiredPixelAmount);
-
+    whenHovering();
 }
 
 const resizeGridButton = document.getElementById('resize-button');
@@ -55,8 +71,20 @@ resizeGridButton.addEventListener('click', resizeGrid);
 // allows users to reset grid without refreshing
 const resetGridButton = document.getElementById('reset-button');
 resetGridButton.addEventListener('click', () => {
-    const allPixels = document.querySelectorAll('.containerGrandchild');
-    for (let pixelNumber = 0; pixelNumber < allPixels.length; pixelNumber++) {
-            allPixels[pixelNumber].classList.remove('hoveredOver'); 
-    }
+    let previousDivAmount = Math.sqrt(document.querySelectorAll('.containerGrandchild')).length
+    removeGrid();
+    createGrid(previousDivAmount);
+    whenHovering();
 });
+
+const randomizeColorButton = document.getElementById('randomize-color');
+randomizeColorButton.addEventListener('click', () => { 
+    let desiredColor = 'random';
+    let previousDivAmount = Math.sqrt(document.querySelectorAll('.containerGrandchild')).length
+    removeGrid();
+    createGrid(previousDivAmount);
+    whenHovering(desiredColor);
+});
+
+createGrid();
+whenHovering();

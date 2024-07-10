@@ -24,6 +24,3 @@ div.containerGrandchild {
     flex:1;
     aspect-ratio: 1/1;
 }
-.hoveredOver {
-   background-color: black;
-}
