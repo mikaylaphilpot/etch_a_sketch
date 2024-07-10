@@ -1,12 +1,16 @@
 const container = document.querySelector("#container");
-
 function whenHovering() {
     const allPixels = document.querySelectorAll('.containerGrandchild');
     for (let pixelNumber = 0; pixelNumber < allPixels.length; pixelNumber++) {
         allPixels[pixelNumber].addEventListener('mouseover', () => {
+            let currentOpacity = (parseInt(allPixels[pixelNumber].style.opacity*10))/10
+            let newOpacity = currentOpacity + .1;
+            if (currentOpacity < 1) {
+                allPixels[pixelNumber].style.opacity = newOpacity; }
             allPixels[pixelNumber].classList.add('hoveredOver');
         } );
     }
+
 }
 // pixel amount should actually be the square root of the amount of pixels desired
 function createGrid(pixelAmount = 16) {

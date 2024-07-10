@@ -25,5 +25,5 @@ div.containerGrandchild {
     aspect-ratio: 1/1;
 }
 .hoveredOver {
-    background-color: rgba(138, 138, 138, 0.595);
+   background-color: black;
 }
